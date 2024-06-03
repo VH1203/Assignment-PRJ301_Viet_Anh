@@ -16,5 +16,6 @@
             Username: <input type="text" name="username"><br/>
             Password: <input type="password" name="password">
         </form>
+        <input type="submit" value="Login">
     </body>
 </html>
