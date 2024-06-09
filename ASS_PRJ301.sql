@@ -1,6 +1,5 @@
 USE [PRJ_TEST]
 GO
-/****** Object:  Table [dbo].[Department]    Script Date: 6/5/2024 5:41:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14,7 +13,6 @@ CREATE TABLE [dbo].[Department](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Employee]    Script Date: 6/5/2024 5:41:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -31,7 +29,6 @@ CREATE TABLE [dbo].[Employee](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[features]    Script Date: 6/5/2024 5:41:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,7 +56,6 @@ CREATE TABLE [dbo].[roles](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[roles_features]    Script Date: 6/5/2024 5:41:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -74,7 +70,6 @@ CREATE TABLE [dbo].[roles_features](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[users]    Script Date: 6/5/2024 5:41:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -89,7 +84,6 @@ CREATE TABLE [dbo].[users](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[users_roles]    Script Date: 6/5/2024 5:41:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -104,12 +98,12 @@ CREATE TABLE [dbo].[users_roles](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-INSERT [dbo].[Department] ([did], [dname]) VALUES (1, N'Information System')
-INSERT [dbo].[Department] ([did], [dname]) VALUES (2, N'Software Engineering')
-INSERT [dbo].[Department] ([did], [dname]) VALUES (3, N'Information Assurance')
-INSERT [dbo].[Department] ([did], [dname]) VALUES (4, N'Artificial Intelligent')
-INSERT [dbo].[Department] ([did], [dname]) VALUES (5, N'Internet of Things')
-GO
+--INSERT [dbo].[Department] ([did], [dname]) VALUES (1, N'Information System')
+--INSERT [dbo].[Department] ([did], [dname]) VALUES (2, N'Software Engineering')
+--INSERT [dbo].[Department] ([did], [dname]) VALUES (3, N'Information Assurance')
+--INSERT [dbo].[Department] ([did], [dname]) VALUES (4, N'Artificial Intelligent')
+--INSERT [dbo].[Department] ([did], [dname]) VALUES (5, N'Internet of Things')
+--GO
 SET IDENTITY_INSERT [dbo].[Employee] ON 
 
 INSERT [dbo].[Employee] ([eid], [ename], [gender], [dob], [did]) VALUES (1, N'Nguyen Viet Giang - XXX', 0, CAST(N'2003-06-04' AS Date), 4)
