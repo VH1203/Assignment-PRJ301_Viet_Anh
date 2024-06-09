@@ -22,11 +22,19 @@
         }
     </style>
     <body>
-        <form action="login" method="POST">
-            Username: <input type="text" name="username"><br/>
-            Password: <input type="password" name="password">
-        </form>
+        <form action="login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
         <input type="submit" value="Login">
+    </form>
+    <%
+        String error = request.getParameter("error");
+        if ("1".equals(error)) {
+            out.println("<p>Invalid username or password.</p>");
+        }
+    %>
         
     </body>
 </html>
