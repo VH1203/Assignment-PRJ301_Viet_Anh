@@ -10,14 +10,13 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-public class Features {
+public class Feature {
     private int id;
     private String url;
     private ArrayList<Role> roles = new ArrayList<>();
 
-    public Features() {
+    public Feature() {
     }
-    
 
     public int getId() {
         return id;

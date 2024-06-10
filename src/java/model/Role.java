@@ -13,8 +13,11 @@ import java.util.ArrayList;
 public class Role {
     private int id;
     private String name;
-    private ArrayList<Users> users= new ArrayList<>();
-    private ArrayList<Features> features = new ArrayList<>();
+    private ArrayList<User> users = new ArrayList<>();
+    private ArrayList<Feature> features = new ArrayList<>();
+
+    public Role() {
+    }
 
     public int getId() {
         return id;
@@ -32,19 +35,19 @@ public class Role {
         this.name = name;
     }
 
-    public ArrayList<Users> getUsers() {
+    public ArrayList<User> getUsers() {
         return users;
     }
 
-    public void setUsers(ArrayList<Users> users) {
+    public void setUsers(ArrayList<User> users) {
         this.users = users;
     }
 
-    public ArrayList<Features> getFeatures() {
+    public ArrayList<Feature> getFeatures() {
         return features;
     }
 
-    public void setFeatures(ArrayList<Features> features) {
+    public void setFeatures(ArrayList<Feature> features) {
         this.features = features;
     }
     

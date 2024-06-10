@@ -10,10 +10,14 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-public class Users {
+public class User {
     private String username;
     private String password;
+    private String displayname;
     private ArrayList<Role> roles = new ArrayList<>();
+
+    public User() {
+    }
 
     public String getUsername() {
         return username;
@@ -31,6 +35,14 @@ public class Users {
         this.password = password;
     }
 
+    public String getDisplayname() {
+        return displayname;
+    }
+
+    public void setDisplayname(String displayname) {
+        this.displayname = displayname;
+    }
+
     public ArrayList<Role> getRoles() {
         return roles;
     }
@@ -39,4 +51,6 @@ public class Users {
         this.roles = roles;
     }
     
-    }
+    
+    
+}
