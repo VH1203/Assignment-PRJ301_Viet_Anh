@@ -18,7 +18,7 @@ public abstract class DBConnection<T> {
         try {
             String user ="sa";
             String pass ="120324";
-            String url ="jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=PRJ_TEST;encript=true;trustservercertificate=true;";
+            String url ="jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=PRJ301;encrypt=true;trustServerCertificate=true";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url,user,pass);
         } catch (ClassNotFoundException ex) {

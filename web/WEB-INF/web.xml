@@ -2,10 +2,26 @@
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>controll.Login</servlet-class>
+        <servlet-class>controll.auth.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewStudent</servlet-name>
+        <servlet-class>controller.student.ViewStudent</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditStudent</servlet-name>
+        <servlet-class>controller.student.EditStudent</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewStudent</servlet-name>
+        <url-pattern>/student/view</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditStudent</servlet-name>
+        <url-pattern>/student/edit</url-pattern>
     </servlet-mapping>
 </web-app>

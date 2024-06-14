@@ -22,7 +22,7 @@
         }
     </style>
     <body>
-        <form action="login" method="post">
+        <form action="login" method="POST">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required><br>
             <label for="password">Password:</label>
