@@ -55,7 +55,7 @@ public class ViewStudent extends CheckAuth {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response, User user) throws ServletException, IOException {
-        response.getWriter().println("view");
+        
     }
 
 }
