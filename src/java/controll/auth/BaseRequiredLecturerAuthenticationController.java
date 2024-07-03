@@ -2,7 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controll.auth;
+
+package controller.auth;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,47 +12,32 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Feature;
-import model.Role;
+import model.Lecturer;
 import model.User;
 
 /**
  *
- * @author Admin
+ * @author sonnt-local
  */
-public abstract class CheckAuth extends HttpServlet {
-
-    private boolean isAuthenticated(HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute("user");
-        if (user == null) {
+public abstract class BaseRequiredLecturerAuthenticationController extends HttpServlet {
+   
+    private boolean isAuthenticated(HttpServletRequest request)
+    {
+        User user = (User)request.getSession().getAttribute("user");
+        if(user ==null)
             return false;
-        } else {
-            String currentURL = request.getServletPath();
-            for (Role role : user.getRoles()) {
-                for (Feature feature : role.getFeatures()) {
-                    if (feature.getUrl().equals(currentURL)) {
-                        return true;
-                    }
-                }
-            }
-            return false;
+        else
+        {
+            Lecturer lecturer = user.getLecturer();
+            return lecturer != null;
         }
     }
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
+    /** 
      * Handles the HTTP <code>GET</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -59,24 +45,26 @@ public abstract class CheckAuth extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("user");
-        if (isAuthenticated(request)) {
-            doGet(request, response, user);
-        } else {
+    throws ServletException, IOException {
+        User user = (User)request.getSession().getAttribute("user");
+        if(isAuthenticated(request))
+        {
+            doGet(request, response, user, user.getLecturer());
+        }
+        else
+        {
             response.getWriter().println("access denied!");
         }
-    }
+    } 
+    
+    protected abstract void doGet(HttpServletRequest request, HttpServletResponse response,User user, Lecturer lecturer)
+    throws ServletException, IOException;
+    
+    protected abstract void doPost(HttpServletRequest request, HttpServletResponse response,User user, Lecturer lecturer)
+    throws ServletException, IOException;
 
-    protected abstract void doGet(HttpServletRequest request, HttpServletResponse response, User user)
-            throws ServletException, IOException;
-
-    protected abstract void doPost(HttpServletRequest request, HttpServletResponse response, User user)
-            throws ServletException, IOException;
-
-    /**
+    /** 
      * Handles the HTTP <code>POST</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -84,11 +72,11 @@ public abstract class CheckAuth extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         User user = (User)request.getSession().getAttribute("user");
         if(isAuthenticated(request))
         {
-            doPost(request, response,user);
+            doPost(request, response, user, user.getLecturer());
         }
         else
         {
@@ -96,9 +84,8 @@ public abstract class CheckAuth extends HttpServlet {
         }
     }
 
-    /**
+    /** 
      * Returns a short description of the servlet.
-     *
      * @return a String containing servlet description
      */
     @Override

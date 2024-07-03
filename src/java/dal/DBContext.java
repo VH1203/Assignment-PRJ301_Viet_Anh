@@ -12,24 +12,27 @@ import java.util.logging.Logger;
  *
  * @author Admin
  */
-public abstract class DBConnection<T> {
-    protected  Connection connection;
-    public DBConnection(){
+public abstract class DBContext<T> {
+    protected Connection connection;
+    public DBContext()
+    {
         try {
-            String user ="sa";
-            String pass ="120324";
-            String url ="jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=PRJ301;encrypt=true;trustServerCertificate=true";
+            String user = "sa";
+            String pass = "120324";
+            String url = "jdbc:sqlserver://VANH\\VANH:1433;databaseName=tet;encrypt=true;trustServerCertificate=true";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(url,user,pass);
+            connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     public abstract void insert(T model);
     public abstract void update(T model);
     public abstract void delete(T model);
     public abstract T get(int id);
     public abstract ArrayList<T> list();
+    
 }

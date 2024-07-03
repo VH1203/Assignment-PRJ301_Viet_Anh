@@ -4,20 +4,15 @@
  */
 package model;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Admin
  */
-public class Role {
+public class Assessment {
     private int id;
     private String name;
-    private ArrayList<User> users = new ArrayList<>();
-    private ArrayList<Feature> features = new ArrayList<>();
-
-    public Role() {
-    }
+    private float weight;
+    private Subject subject;
 
     public int getId() {
         return id;
@@ -35,21 +30,20 @@ public class Role {
         this.name = name;
     }
 
-    public ArrayList<User> getUsers() {
-        return users;
+    public float getWeight() {
+        return weight;
     }
 
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
+    public void setWeight(float weight) {
+        this.weight = weight;
     }
 
-    public ArrayList<Feature> getFeatures() {
-        return features;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setFeatures(ArrayList<Feature> features) {
-        this.features = features;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
-    
     
 }

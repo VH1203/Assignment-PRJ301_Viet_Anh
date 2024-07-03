@@ -4,7 +4,7 @@
  */
 package model;
 
-import java.util.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,8 +13,7 @@ import java.util.Date;
 public class Student {
     private int id;
     private String name;
-    private  Date dob;
-    private boolean gender;
+    private ArrayList<Course> courses = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -32,22 +31,12 @@ public class Student {
         this.name = name;
     }
 
-    public Date getDob() {
-        return dob;
+    public ArrayList<Course> getCourses() {
+        return courses;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setCourses(ArrayList<Course> courses) {
+        this.courses = courses;
     }
-
-    public boolean isGender() {
-        return gender;
-    }
-
-    public void setGender(boolean gender) {
-        this.gender = gender;
-    }
-    
-    
     
 }

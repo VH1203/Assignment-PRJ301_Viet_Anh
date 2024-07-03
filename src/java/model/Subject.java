@@ -4,23 +4,24 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
 public class Subject {
-    private int subjectId;
+    private int id;
     private String name;
+    private ArrayList<Course> courses = new ArrayList<>();
+    private ArrayList<Assessment> assessments = new ArrayList<>();
 
-    public Subject() {
+    public int getId() {
+        return id;
     }
 
-    public int getSubjectId() {
-        return subjectId;
-    }
-
-    public void setSubjectId(int subjectId) {
-        this.subjectId = subjectId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -30,6 +31,21 @@ public class Subject {
     public void setName(String name) {
         this.name = name;
     }
+
+    public ArrayList<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(ArrayList<Course> courses) {
+        this.courses = courses;
+    }
+
+    public ArrayList<Assessment> getAssessments() {
+        return assessments;
+    }
+
+    public void setAssessments(ArrayList<Assessment> assessments) {
+        this.assessments = assessments;
+    }
     
-    
-}
+} 

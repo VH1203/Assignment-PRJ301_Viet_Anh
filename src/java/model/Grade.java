@@ -9,46 +9,32 @@ package model;
  * @author Admin
  */
 public class Grade {
-    private int gradeid;
-    private int studentid;
-    private int subjectid;
-    private double point;
+    private Exam exam;
+    private Student student;
+    private float score;
 
-    public Grade() {
+    public Exam getExam() {
+        return exam;
     }
 
-    public int getGradeid() {
-        return gradeid;
+    public void setExam(Exam exam) {
+        this.exam = exam;
     }
 
-    public void setGradeid(int gradeid) {
-        this.gradeid = gradeid;
+    public Student getStudent() {
+        return student;
     }
 
-    public int getStudentid() {
-        return studentid;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    public void setStudentid(int studentid) {
-        this.studentid = studentid;
+    public float getScore() {
+        return score;
     }
 
-    public int getSubjectid() {
-        return subjectid;
+    public void setScore(float score) {
+        this.score = score;
     }
-
-    public void setSubjectid(int subjectid) {
-        this.subjectid = subjectid;
-    }
-
-    public double getPoint() {
-        return point;
-    }
-
-    public void setPoint(double point) {
-        this.point = point;
-    }
-    
-    
     
 }

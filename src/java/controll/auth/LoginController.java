@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package controll.auth;
+package controller.auth;
 
-import dal.UserDB;
+import dal.UserDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,17 +16,10 @@ import model.User;
 
 /**
  *
- * @author Admin
+ * @author sonnt-local
  */
-public class Login extends HttpServlet {
+public class LoginController extends HttpServlet {
    
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -40,7 +33,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        request.getRequestDispatcher("view/login.jsp").forward(request, response);
+        request.getRequestDispatcher("view/auth/login.jsp").forward(request, response);
     } 
 
     /** 
@@ -56,17 +49,19 @@ public class Login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
-        UserDB db = new UserDB();
-        User user= db.get(username, password);
-        if(user == null)
+        UserDBContext db = new UserDBContext();
+        User user = db.getUserByUsernamePassword(username, password);
+        if(user !=null)
         {
-            response.getWriter().println("invalid username or password!");
+            request.getSession().setAttribute("user", user);
+            response.getWriter().println("login successful: "+ user.getDisplayname());
         }
         else
         {
-            request.getSession().setAttribute("user", user);
-            response.getWriter().println("Hello "+user.getDisplayname());
+            response.getWriter().println("login failed!");
+            response.sendRedirect("login");
         }
+        
     }
 
     /** 

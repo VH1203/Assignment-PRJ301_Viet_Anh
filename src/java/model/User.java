@@ -4,8 +4,6 @@
  */
 package model;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Admin
@@ -14,10 +12,8 @@ public class User {
     private String username;
     private String password;
     private String displayname;
-    private ArrayList<Role> roles = new ArrayList<>();
-
-    public User() {
-    }
+    private Lecturer lecturer;
+    private Student student;
 
     public String getUsername() {
         return username;
@@ -43,14 +39,20 @@ public class User {
         this.displayname = displayname;
     }
 
-    public ArrayList<Role> getRoles() {
-        return roles;
+    public Lecturer getLecturer() {
+        return lecturer;
     }
 
-    public void setRoles(ArrayList<Role> roles) {
-        this.roles = roles;
+    public void setLecturer(Lecturer lecturer) {
+        this.lecturer = lecturer;
     }
-    
-    
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
     
 }

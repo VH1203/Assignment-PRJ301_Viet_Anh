@@ -10,13 +10,10 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-public class Feature {
+public class Lecturer {
     private int id;
-    private String url;
-    private ArrayList<Role> roles = new ArrayList<>();
-
-    public Feature() {
-    }
+    private String name;
+    private ArrayList<Course> courses = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -26,21 +23,20 @@ public class Feature {
         this.id = id;
     }
 
-    public String getUrl() {
-        return url;
+    public String getName() {
+        return name;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public ArrayList<Role> getRoles() {
-        return roles;
+    public ArrayList<Course> getCourses() {
+        return courses;
     }
 
-    public void setRoles(ArrayList<Role> roles) {
-        this.roles = roles;
+    public void setCourses(ArrayList<Course> courses) {
+        this.courses = courses;
     }
-    
     
 }

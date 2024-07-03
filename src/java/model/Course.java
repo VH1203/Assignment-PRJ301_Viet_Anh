@@ -11,43 +11,50 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class Course {
-   private int courseId;
-   private String coursename;
-   private String semester;
-   private ArrayList<Student> students;
+    private int id;
+    private String name;
+    private Lecturer lecturer;
+    private Subject subject;
+    private Semester semester;
+    private ArrayList<Student> students = new ArrayList<>();
 
-   
-    public Course() {
+    public int getId() {
+        return id;
     }
 
-    public Course(int courseId, String coursename, String semester, ArrayList<Student> students) {
-        this.courseId = courseId;
-        this.coursename = coursename;
-        this.semester = semester;
-        this.students = students;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getCourseId() {
-        return courseId;
+    public String getName() {
+        return name;
     }
 
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCoursename() {
-        return coursename;
+    public Lecturer getLecturer() {
+        return lecturer;
     }
 
-    public void setCoursename(String coursename) {
-        this.coursename = coursename;
+    public void setLecturer(Lecturer lecturer) {
+        this.lecturer = lecturer;
     }
 
-    public String getSemester() {
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
+    public Semester getSemester() {
         return semester;
     }
 
-    public void setSemester(String semester) {
+    public void setSemester(Semester semester) {
         this.semester = semester;
     }
 
@@ -58,6 +65,5 @@ public class Course {
     public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
-   
-   
+    
 }
