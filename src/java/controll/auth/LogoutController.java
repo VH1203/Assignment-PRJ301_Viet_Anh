@@ -3,36 +3,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package controller.auth;
+package controll.auth;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Lecturer;
-import model.User;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
- * @author sonnt-local
+ * @author Admin
  */
-public abstract class BaseRequiredLecturerAuthenticationController extends HttpServlet {
+public class LogoutController extends HttpServlet {
    
-    private boolean isAuthenticated(HttpServletRequest request)
-    {
-        User user = (User)request.getSession().getAttribute("user");
-        if(user ==null)
-            return false;
-        else
-        {
-            Lecturer lecturer = user.getLecturer();
-            return lecturer != null;
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        
+        // Invalidate the session, effectively logging out the user
+        request.getSession().invalidate();
+        
+        // Redirect back to login page
+        response.sendRedirect("login");
         }
-    }
-    
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -46,22 +50,8 @@ public abstract class BaseRequiredLecturerAuthenticationController extends HttpS
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        User user = (User)request.getSession().getAttribute("user");
-        if(isAuthenticated(request))
-        {
-            doGet(request, response, user, user.getLecturer());
-        }
-        else
-        {
-            response.getWriter().println("access denied!");
-        }
+        processRequest(request, response);
     } 
-    
-    protected abstract void doGet(HttpServletRequest request, HttpServletResponse response,User user, Lecturer lecturer)
-    throws ServletException, IOException;
-    
-    protected abstract void doPost(HttpServletRequest request, HttpServletResponse response,User user, Lecturer lecturer)
-    throws ServletException, IOException;
 
     /** 
      * Handles the HTTP <code>POST</code> method.
@@ -73,15 +63,7 @@ public abstract class BaseRequiredLecturerAuthenticationController extends HttpS
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        User user = (User)request.getSession().getAttribute("user");
-        if(isAuthenticated(request))
-        {
-            doPost(request, response, user, user.getLecturer());
-        }
-        else
-        {
-            response.getWriter().println("access denied!");
-        }
+        processRequest(request, response);
     }
 
     /** 
