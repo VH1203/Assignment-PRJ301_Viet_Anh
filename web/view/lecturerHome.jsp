@@ -13,5 +13,8 @@
 <body>
     <h1>Welcome, Lecturer</h1>
     <a href="enterGrades.jsp">Enter Grades</a>
+    <form action="logout" method="post">
+        <input type="submit" value="Logout"/>
+    </form>
 </body>
 </html>

@@ -4,19 +4,27 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/model/Course.java</file>
+            <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/controll/auth/CheckAuth.java</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/model/User.java</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/model/Student.java</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/dal/UserDAO.java</file>
+            <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/web/view/studentHome.jsp</file>
+            <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/web/view/adminHome.jsp</file>
+            <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/controller/student/EditGrades.java</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/model/Subject.java</file>
+            <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/web/view/lecturerHome.jsp</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/model/Assessment.java</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/web/view/login.jsp</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/web/WEB-INF/web.xml</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/model/Lecturer.java</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/dal/DBContext.java</file>
+            <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/web/view/error.jsp</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/controll/auth/LoginController.java</file>
+            <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/controll/auth/LogoutController.java</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/model/Exam.java</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/model/Semester.java</file>
             <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/src/java/model/Grade.java</file>
+            <file>file:/D:/ProgramFile/Codejava/Project%20PRJ/Assignment_PRJ301_VAnh/web/view/viewpoint.jsp</file>
         </group>
     </open-files>
 </project-private>

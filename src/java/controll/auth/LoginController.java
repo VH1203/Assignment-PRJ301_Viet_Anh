@@ -41,6 +41,9 @@ public class LoginController extends HttpServlet {
 
         User user = userDao.authenticateUser(username, password);
         if (user != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("loggedInUser", username);
+            session.setAttribute("userRole", user.getRole());
             switch (user.getRole()) {
                 case "student":
                     response.sendRedirect("view/studentHome.jsp");
