@@ -54,7 +54,7 @@ public class AdminServlet extends HttpServlet {
             
             daoa.updateSubjectStatus(subjectId, newStatus);
         }
-        response.sendRedirect("home/admin");
+        response.sendRedirect("admin");
     }
 
 }

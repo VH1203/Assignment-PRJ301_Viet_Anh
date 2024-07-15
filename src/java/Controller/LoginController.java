@@ -65,19 +65,19 @@ public class LoginController extends HttpServlet {
                 response.addCookie(passwordCookie);
             }
             if (userAccount.getRole_id() == 1) {
-                session.setAttribute("home/admin", userAccount);
-                response.sendRedirect("home/admin");
+                session.setAttribute("admin", userAccount);
+                response.sendRedirect("admin");
             }
             if (userAccount.getRole_id() == 2) {
                 TeacherDao daot = new TeacherDao();
                 Teacher teacherAccount = daot.getTeacher(userAccount.getUser_id());
                 session.setAttribute("teacher", teacherAccount);
-                response.sendRedirect("home/teacher");
+                response.sendRedirect("teacher");
             }
             if (userAccount.getRole_id() == 3) {
 
                 session.setAttribute("acc", userAccount);
-                response.sendRedirect("home/student");
+                response.sendRedirect("student");
 
             }
 

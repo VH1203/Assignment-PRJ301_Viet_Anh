@@ -6,14 +6,11 @@
     </servlet>
     <filter>
         <filter-name>CheckAuth</filter-name>
-        <filter-class>controll.auth.CheckAuth</filter-class>
+        <filter-class>Controller.CheckAuth</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>CheckAuth</filter-name>
         <url-pattern>/view/*</url-pattern>
-        <url-pattern>/adminhome</url-pattern>
-        <url-pattern>/lecturerhome</url-pattern>
-        <url-pattern>/studenthome</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>StudentServlet</servlet-name>
@@ -33,11 +30,11 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>TeacherServlet</servlet-name>
-        <url-pattern>/home/teacher</url-pattern>
+        <url-pattern>/teacher</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>StudentServlet</servlet-name>
-        <url-pattern>/home/student</url-pattern>
+        <url-pattern>/student</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
@@ -49,7 +46,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminServlet</servlet-name>
-        <url-pattern>/home/admin</url-pattern>
+        <url-pattern>/admin</url-pattern>
     </servlet-mapping>
     <error-page>
         <error-code>403</error-code>
