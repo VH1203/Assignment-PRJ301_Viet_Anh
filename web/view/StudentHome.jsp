@@ -41,15 +41,87 @@
         <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
     </head>
     <style>
+        .small-input {
+            width: 80px;
+            padding: 5px;
+            font-size: 0.8em;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
+            border: solid 1px
         }
-        th, td {
+        th {
             border: 1px solid #dee2e6;
             padding: 8px;
             text-align: center; /* Center align text horizontally */
             vertical-align: middle; /* Center align text vertically */
+            border: solid 1px;
+        }
+        .custom-form {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .mb-3 {
+            margin-bottom: 1rem;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .form-label {
+            margin-bottom: 0.5rem;
+            display: block;
+            font-weight: bold;
+        }
+
+        .col-4 {
+            flex: 0 0 auto;
+            width: 33.333333%;
+            max-width: 33.333333%;
+        }
+
+        .col-6 {
+            flex: 0 0 auto;
+            width: 50%;
+            max-width: 50%;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        .clickable-frame {
+            border: 1px solid #ddd;
+            padding: 10px;
+            display: inline-block;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #000;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease;
+        }
+        .clickable-frame:hover {
+            background-color: #e9e9e9;
         }
     </style>
 
@@ -100,39 +172,40 @@
                     <div class="col-12">
                         <div class="card my-4">
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                    <h6 class="text-white text-capitalize ps-3">${student.student_name} - ${student.student_roll_number}</h6>
+                                <div style="text-align: center" class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3" >
+                                    <h4 class="text-white text-capitalize ps-3">${student.student_name} - ${student.student_roll_number}</h4>
                                 </div>
                             </div>
 
-                            <div class="card-body px-0 pb-2">
+                            <div class="card-body px-0 pb-2"style="margin: 0 40px">
                                 <form action="student?action=viewSubject&studentID=${student.student_id}" method="post">
-                                    <div style="display: inline-block;">
-                                        <select class="form-select" name="semesteridd" aria-label="Select semester" style="padding: 17px; width: 932px; margin-left: 20px;" required>
-                                            <c:forEach items="${listSemester}" var="ls">
-                                                <option value="${ls.semester_id}" <c:if test="${param.semesteridd == ls.semester_id}">selected</c:if>>${ls.semester_name}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
+                                    <div style="display: flex; margin-bottom: 10px">
+                                        <div style="display: inline-block;">
+                                            <select class="form-select" name="semesteridd" aria-label="Select semester" style="padding: 17px; width: 400px; margin-left: 20px;font-size: 18px" required>
+                                                <c:forEach items="${listSemester}" var="ls">
+                                                    <option value="${ls.semester_id}" <c:if test="${param.semesteridd == ls.semester_id}">selected</c:if>>${ls.semester_name}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
 
-                                    <div style="display: inline-block; margin-top: 15px;">
-                                        <select required class="form-select" name="classidd" aria-label="Select class" style="padding: 17px; width: 932px; margin-left: 20px;">
-                                            <c:forEach items="${listClass}" var="lc">
-                                                <option value="${lc.class_id}" <c:if test="${param.classidd == lc.class_id}">selected</c:if>>${lc.class_name}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <br>
-                                    <label style="margin-left: 20px; margin-top: 20px;">
-                                        <button type="submit" class="btn btn-success m-1">Selected</button>
-                                    </label>
+                                        <div style="display: inline-block;">
+                                            <select required class="form-select" name="classidd" aria-label="Select class" style="padding: 17px; width: 400px; margin-left: 20px;font-size: 18px">
+                                                <c:forEach items="${listClass}" var="lc">
+                                                    <option value="${lc.class_id}" <c:if test="${param.classidd == lc.class_id}">selected</c:if>>${lc.class_name}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <label style="margin-left: 20px;">
+                                            <button type="submit" class="btn btn-success m-1"style=" font-size: 14px">Selected</button>
+                                        </label></div>
                                 </form>
 
                                 <c:choose>
                                     <c:when test="${not empty viewSubject}">
                                         <c:forEach items="${viewSubject}" var="vs">
-                                            <span style="margin-left: 20px">
-                                                <a href="#" onclick="submitViewDetailForm('${vs.subject_name}', '${vs.student_id}', '${vs.semester_id}', '${vs.class_id}');
+                                            <span style="margin-left: 35px">
+                                                <a href="#"class="clickable-frame" onclick="submitViewDetailForm('${vs.subject_name}', '${vs.student_id}', '${vs.semester_id}', '${vs.class_id}');
                                                         return false;">
                                                     ${vs.subject_name}
                                                 </a>
@@ -160,7 +233,7 @@
 
                                 <div class="table-responsive p-0">
                                     <c:if test="${viewMark.subject_name eq 'CSD201'}">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered" style="border: solid 1px">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">PT1</th>
@@ -175,7 +248,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>
+                                                    <th style="border: solid 1px">
                                                         <c:choose>
                                                             <c:when test="${viewMark.pt1 == 0}">
                                                                 Empty
@@ -184,8 +257,8 @@
                                                                 ${viewMark.pt1}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.pt2 == 0}">
                                                                 Empty
@@ -194,8 +267,8 @@
                                                                 ${viewMark.pt2}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.assignment_1 == 0}">
                                                                 Empty
@@ -204,8 +277,8 @@
                                                                 ${viewMark.assignment_1}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.assignment_2 == 0}">
                                                                 Empty
@@ -214,8 +287,8 @@
                                                                 ${viewMark.assignment_2}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.pe == 0}">
                                                                 Empty
@@ -224,8 +297,8 @@
                                                                 ${viewMark.pe}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.fe == 0}">
                                                                 Empty
@@ -234,21 +307,21 @@
                                                                 ${viewMark.fe}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
+                                                    </th>
 
-                                                    <td>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${total == 0}">
                                                                 Empty
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <c:set var="total" value="${(viewMark.pt1 + viewMark.pt2 + viewMark.assignment_1 + viewMark.assignment_2 + viewMark.pe + viewMark.fe) / 6.0}" />
-                                                                <fmt:formatNumber value="${total}" type="number" minFractionDigits="2" maxFractionDigits="2" />
-                                                                ${total}
+                                                                <c:set var="total" value="${(viewMark.pt1*0.1 + viewMark.pt2*0.1 + viewMark.assignment_1*0.1 + viewMark.assignment_2*0.1 + viewMark.pe*0.3 + viewMark.fe*0.3)}" />
+                                                                <fmt:formatNumber value="${total}" type="number" minFractionDigits="1" maxFractionDigits="1" />
+                                                             
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${total >= 5}">
                                                                 <div style="color: green">Pass</div> 
@@ -258,7 +331,7 @@
 
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
+                                                    </th>
                                                 </tr>                                `   
 
 
@@ -266,7 +339,7 @@
                                         </table>
                                     </c:if>
                                     <c:if test="${viewMark.subject_name eq 'PRJ301'}">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered"style="border: solid 1px">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">WS1</th>
@@ -282,7 +355,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.ws1 == 0}">
                                                                 Empty
@@ -291,8 +364,8 @@
                                                                 ${viewMark.ws1}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.ws2 == 0}">
                                                                 Empty
@@ -301,8 +374,8 @@
                                                                 ${viewMark.ws2}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.pt1 == 0}">
                                                                 Empty
@@ -311,8 +384,8 @@
                                                                 ${viewMark.pt1}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.pt2 == 0}">
                                                                 Empty
@@ -321,8 +394,8 @@
                                                                 ${viewMark.pt2}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.assignment == 0}">
                                                                 Empty
@@ -331,8 +404,8 @@
                                                                 ${viewMark.assignment}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.pe == 0}">
                                                                 Empty
@@ -341,8 +414,8 @@
                                                                 ${viewMark.pe}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.fe == 0}">
                                                                 Empty
@@ -351,19 +424,19 @@
                                                                 ${viewMark.fe}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${total == 0}">
                                                                 Empty
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <c:set var="total" value="${(viewMark.ws1 + viewMark.ws2 + viewMark.pt1 + viewMark.pt2 + viewMark.assignment + viewMark.pe + viewMark.fe) / 7.0}" />
-                                                                ${total}
+                                                                <c:set var="total" value="${(viewMark.ws1*0.05 + viewMark.ws2*0.05 + viewMark.pt1*0.05 + viewMark.pt2*0.05 + viewMark.assignment*0.4 + viewMark.pe*0.2 + viewMark.fe*0.2)}" />
+                                                                <fmt:formatNumber value="${total}" type="number" minFractionDigits="1" maxFractionDigits="1" />
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${total >= 5}">
                                                                 <div style="color: green">Pass</div> 
@@ -373,7 +446,7 @@
 
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
+                                                    </th>
                                                 </tr>                                `   
 
                                             </tbody>
@@ -381,7 +454,7 @@
                                     </c:if>
 
                                     <c:if test="${viewMark.subject_name eq 'JPD123'}">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered"style="border: solid 1px">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">PP</th>
@@ -397,7 +470,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.pp == 0}">
                                                                 Empty
@@ -406,8 +479,8 @@
                                                                 ${viewMark.pp}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.pt1 == 0}">
                                                                 Empty
@@ -416,8 +489,8 @@
                                                                 ${viewMark.pt1}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.pt2 == 0}">
                                                                 Empty
@@ -426,8 +499,8 @@
                                                                 ${viewMark.pt2}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.mt == 0}">
                                                                 Empty
@@ -436,8 +509,8 @@
                                                                 ${viewMark.mt}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.fe == 0}">
                                                                 Empty
@@ -446,19 +519,19 @@
                                                                 ${viewMark.fe}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${total == 0}">
                                                                 Empty
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <c:set var="total" value="${(viewMark.pp + viewMark.mt + viewMark.pt1 + viewMark.pt2 + viewMark.fe) / 5.0}" />
-                                                                ${total}
+                                                                <c:set var="total" value="${(viewMark.pp*0.1 + viewMark.mt*0.3 + viewMark.pt1*0.1 + viewMark.pt2*0.1 + viewMark.fe*0.4)}" />
+                                                                <fmt:formatNumber value="${total}" type="number" minFractionDigits="1" maxFractionDigits="1" />
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${total >= 5}">
                                                                 <div style="color: green">Pass</div> 
@@ -468,7 +541,7 @@
 
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
+                                                    </th>
 
                                                 </tr>                                `   
 
@@ -477,7 +550,7 @@
                                     </c:if>
 
                                     <c:if test="${viewMark.subject_name eq 'MAS291'}">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered"style="border: solid 1px">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Computer Project</th>
@@ -493,7 +566,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.cp == 0}">
                                                                 Empty
@@ -502,8 +575,8 @@
                                                                 ${viewMark.cp}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.assignment_1 == 0}">
                                                                 Empty
@@ -512,8 +585,8 @@
                                                                 ${viewMark.assignment_1}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.assignment_2 == 0}">
                                                                 Empty
@@ -522,8 +595,8 @@
                                                                 ${viewMark.assignment_2}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.pt1 == 0}">
                                                                 Empty
@@ -532,8 +605,8 @@
                                                                 ${viewMark.pt1}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.pt2 == 0}">
                                                                 Empty
@@ -542,9 +615,9 @@
                                                                 ${viewMark.pt2}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
+                                                    </th>
 
-                                                    <td>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.fe == 0}">
                                                                 Empty
@@ -553,19 +626,19 @@
                                                                 ${viewMark.fe}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${total == 0}">
                                                                 Empty
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <c:set var="total" value="${(viewMark.cp + viewMark.assignment_1 + viewMark.assignment_2 + viewMark.pt1 + viewMark.pt2 +viewMark.fe) / 6.0}" />
-                                                                ${total}
+                                                                <c:set var="total" value="${(viewMark.cp*0.25 + viewMark.assignment_1*0.1 + viewMark.assignment_2*0.1 + viewMark.pt1*0.1 + viewMark.pt2*0.1 +viewMark.fe*0.35)}" />
+                                                                <fmt:formatNumber value="${total}" type="number" minFractionDigits="1" maxFractionDigits="1" />
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${total >= 5}">
                                                                 <div style="color: green">Pass</div> 
@@ -575,7 +648,7 @@
 
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
+                                                    </th>
 
                                                 </tr>                              `   
 
@@ -584,7 +657,7 @@
                                     </c:if>
 
                                     <c:if test="${viewMark.subject_name eq 'WED201c'}">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered"style="border: solid 1px">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">PE</th>
@@ -595,7 +668,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.pe == 0}">
                                                                 Empty
@@ -604,8 +677,8 @@
                                                                 ${viewMark.pe}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${viewMark.te == 0}">
                                                                 Empty
@@ -614,19 +687,19 @@
                                                                 ${viewMark.te}
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${total == 0}">
                                                                 Empty
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <c:set var="total" value="${(viewMark.pe +viewMark.te) / 2.0}" />
-                                                                ${total}
+                                                                <c:set var="total" value="${(viewMark.pe*0.5 +viewMark.te*0.5)}" />
+                                                                <fmt:formatNumber value="${total}" type="number" minFractionDigits="1" maxFractionDigits="1" />
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
-                                                    <td>
+                                                    </th>
+                                                    <th>
                                                         <c:choose>
                                                             <c:when test="${total >= 5}">
                                                                 <div style="color: green">Pass</div> 
@@ -636,7 +709,7 @@
 
                                                             </c:otherwise>
                                                         </c:choose>
-                                                    </td>
+                                                    </th>
 
 
                                                 </tr>                                `   

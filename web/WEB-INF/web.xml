@@ -11,6 +11,9 @@
     <filter-mapping>
         <filter-name>CheckAuth</filter-name>
         <url-pattern>/view/*</url-pattern>
+        <url-pattern>/student</url-pattern>
+        <url-pattern>/admin</url-pattern>
+        <url-pattern>/teacher</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>StudentServlet</servlet-name>
@@ -27,6 +30,10 @@
     <servlet>
         <servlet-name>AdminServlet</servlet-name>
         <servlet-class>Controller.AdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Error</servlet-name>
+        <servlet-class>Controller.Error</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TeacherServlet</servlet-name>
@@ -47,6 +54,10 @@
     <servlet-mapping>
         <servlet-name>AdminServlet</servlet-name>
         <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Error</servlet-name>
+        <url-pattern>/accessdenied</url-pattern>
     </servlet-mapping>
     <error-page>
         <error-code>403</error-code>

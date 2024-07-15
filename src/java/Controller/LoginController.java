@@ -23,8 +23,8 @@ import jakarta.servlet.http.HttpSession;
  * @author Admin
  */
 public class LoginController extends HttpServlet {
-   
-   @Override
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("/login.jsp").forward(request, response);
@@ -39,21 +39,23 @@ public class LoginController extends HttpServlet {
         String rememberMe = request.getParameter("rememberMe");
 
         User userAccount = new User(username, password);
-        AccountDAO adao = new AccountDAO();
+        AccountDAO dao = new AccountDAO();
 
         HttpSession session = request.getSession();
 
-        boolean loginResult = adao.checkLogin(userAccount);
+        boolean loginResult = dao.checkLogin(userAccount);
 
         if (loginResult) {
-            userAccount = adao.getUser(userAccount.getUsername());
+            userAccount = dao.getUser(userAccount.getUsername());
+            session.setAttribute("user", userAccount);
+
             if ("on".equals(rememberMe)) {
                 Cookie usernameCookie = new Cookie("username", username);
-                usernameCookie.setMaxAge(30 * 24 * 60 * 60);
+                usernameCookie.setMaxAge(30 * 24 * 60 * 60); // 30 days
                 response.addCookie(usernameCookie);
 
                 Cookie passwordCookie = new Cookie("password", password);
-                passwordCookie.setMaxAge(30 * 24 * 60 * 60);
+                passwordCookie.setMaxAge(30 * 24 * 60 * 60); // 30 days
                 response.addCookie(passwordCookie);
             } else {
                 Cookie usernameCookie = new Cookie("username", "");
@@ -64,6 +66,8 @@ public class LoginController extends HttpServlet {
                 passwordCookie.setMaxAge(0);
                 response.addCookie(passwordCookie);
             }
+
+            // Redirect based on user role
             if (userAccount.getRole_id() == 1) {
                 session.setAttribute("admin", userAccount);
                 response.sendRedirect("admin");
@@ -80,9 +84,7 @@ public class LoginController extends HttpServlet {
                 response.sendRedirect("student");
 
             }
-
         } else {
-
             request.setAttribute("errorMessage", "Invalid username or password.");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
