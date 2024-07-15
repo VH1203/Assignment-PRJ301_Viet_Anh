@@ -10,10 +10,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AccountDAO extends DBConnect{
+public class AccountDAO extends DBConnect {
 
     DBConnect db = new DBConnect();
     Connection con = db.connection;
+
     public boolean checkLogin(User userAccount) {
         String email = userAccount.getUsername();
         String password = userAccount.getPassword();
@@ -22,7 +23,7 @@ public class AccountDAO extends DBConnect{
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, email);
-            
+
             ps.setString(2, password);
 
             ResultSet rs = ps.executeQuery();
@@ -49,7 +50,7 @@ public class AccountDAO extends DBConnect{
                     userAccount.setPassword(rs.getString("password"));
 
                     userAccount.setRole_id(rs.getInt("role_id"));
-                    
+
                 } else {
                     return null;
                 }
@@ -59,9 +60,4 @@ public class AccountDAO extends DBConnect{
         }
         return userAccount;
     }
-
-   
-
-    
-
 }

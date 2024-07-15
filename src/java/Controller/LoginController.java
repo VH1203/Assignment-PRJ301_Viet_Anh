@@ -39,14 +39,14 @@ public class LoginController extends HttpServlet {
         String rememberMe = request.getParameter("rememberMe");
 
         User userAccount = new User(username, password);
-        AccountDAO daou = new AccountDAO();
+        AccountDAO adao = new AccountDAO();
 
         HttpSession session = request.getSession();
 
-        boolean loginResult = daou.checkLogin(userAccount);
+        boolean loginResult = adao.checkLogin(userAccount);
 
         if (loginResult) {
-            userAccount = daou.getUser(userAccount.getUsername());
+            userAccount = adao.getUser(userAccount.getUsername());
             if ("on".equals(rememberMe)) {
                 Cookie usernameCookie = new Cookie("username", username);
                 usernameCookie.setMaxAge(30 * 24 * 60 * 60);
@@ -87,6 +87,4 @@ public class LoginController extends HttpServlet {
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
     }
-
-
 }
