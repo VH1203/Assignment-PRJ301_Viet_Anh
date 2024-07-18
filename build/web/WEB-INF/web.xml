@@ -11,6 +11,7 @@
     <filter-mapping>
         <filter-name>CheckAuth</filter-name>
         <url-pattern>/view/*</url-pattern>
+        <url-pattern>/assets/*</url-pattern>
         <url-pattern>/student</url-pattern>
         <url-pattern>/admin</url-pattern>
         <url-pattern>/teacher</url-pattern>

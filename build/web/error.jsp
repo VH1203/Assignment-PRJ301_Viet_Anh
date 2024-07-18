@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Access denied</title>
+        <link rel="shortcut icon" href="assets/img/Title.png" type="image/x-icon"/>
     </head>
     <body>
         <h1>Access Denied</h1>

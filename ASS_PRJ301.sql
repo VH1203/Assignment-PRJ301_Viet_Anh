@@ -1,6 +1,5 @@
-﻿USE [master]
-GO
-CREATE DATABASE [ASSIGNMENT_VANH_PRJ301]
+﻿
+CREATE DATABASE ASSIGNMENT_VANH_PRJ301
 go
 USE ASSIGNMENT_VANH_PRJ301
 GO
@@ -311,3 +310,8 @@ USE [master]
 GO
 ALTER DATABASE [ASSIGNMENT_VANH_PRJ301] SET  READ_WRITE 
 GO
+
+
+SELECT *
+               FROM dbo.Subject
+                WHERE subject_name = 'PRJ301' AND student_id = 1 AND class_id = 1 AND semester_id = 2

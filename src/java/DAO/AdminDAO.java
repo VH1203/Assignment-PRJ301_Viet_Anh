@@ -21,15 +21,14 @@ public class AdminDAO {
 
     DBConnect db = new DBConnect();
     Connection con = db.connection;
-    
+
     public List<Subject> listAllSubjectForAdmin() {
         List<Subject> sub = new ArrayList<>();
         String query = "SELECT * FROM ("
                 + "  SELECT *, ROW_NUMBER() OVER (PARTITION BY subject_name ORDER BY subject_id) AS rn "
                 + "  FROM [dbo].[Subject]"
                 + ") AS subquery "
-                + "WHERE rn in (1,2,3,4,5,6)";
-        
+                + "WHERE rn in (1,3,5)";
         try (PreparedStatement ps = con.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Subject s = new Subject();

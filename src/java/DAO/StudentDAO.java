@@ -37,7 +37,7 @@ public class StudentDAO {
                 + "    class_id = ? \n"
                 + "    AND semester_id = ? \n"
                 + "    AND student_id = ? \n"
-                + "    AND status = 'active'\n"
+//                + "    AND status = 'active'\n"
                 + "GROUP BY \n"
                 + "    subject_name, student_id,class_id,semester_id";
 
@@ -163,7 +163,7 @@ public class StudentDAO {
         List<Subject> sub = new ArrayList<>();
         String query
                 = "SELECT *\n"
-                + "  FROM [dbo].[Subject] where [subject_name] = ? AND [student_id] = ? AND [class_id] = ? AND [semester_id] = ? AND [status] = 'active'";
+                + "  FROM [dbo].[Subject] where [subject_name] = ? AND [student_id] = ? AND [class_id] = ? AND [semester_id] = ?";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             // Setting the parameters for the query
@@ -198,7 +198,7 @@ public class StudentDAO {
         String query
                 = "SELECT *\n"
                 + "FROM dbo.Subject\n"
-                + "WHERE subject_name = ? AND student_id = ? AND class_id = ? AND semester_id = ? AND status = 'active'";
+                + "WHERE subject_name = ? AND student_id = ? AND class_id = ? AND semester_id = ?";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             // Setting the parameters for the query

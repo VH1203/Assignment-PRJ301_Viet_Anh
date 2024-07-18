@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="css/login.css" />
         <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
         <title>Assignment PRJ301</title>
+        <link rel="shortcut icon" href="assets/img/Title.png" type="image/x-icon"/>
     </head>
     <style>
         body{
