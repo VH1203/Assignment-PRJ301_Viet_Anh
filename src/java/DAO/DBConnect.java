@@ -24,8 +24,8 @@ public class DBConnect {
 
         try {
             String user = "sa";
-            String pass = "120324";
-            String url = "jdbc:sqlserver://VANH\\VANH:1433;databaseName=ASSIGNMENT_VANH_PRJ301;encrypt=true;trustServerCertificate=true";
+            String pass = "123";
+            String url = "jdbc:sqlserver://LAPTOP-GRTNJF7D\\SQLEXPRESS:1433;databaseName=ASSIGNMENT_VANH_PRJ301;encrypt=true;trustServerCertificate=true";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException | SQLException ex) {
