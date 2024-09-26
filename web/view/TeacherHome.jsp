@@ -38,7 +38,7 @@
         <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
         <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
         <style>
-            .small-input {
+        .small-input {
                 width: 80px;
                 padding: 5px;
                 font-size: 0.8em;
@@ -118,6 +118,7 @@
             .clickable-frame:hover {
                 background-color: #e9e9e9;
             }
+            
         </style>
     </head>
 
@@ -891,7 +892,6 @@
 
                                         }
                                         );
-
 
     </script>
 </body>
